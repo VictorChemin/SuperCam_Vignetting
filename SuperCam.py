@@ -55,8 +55,10 @@ while 1:
         
     # Create input window
     root=tk.Tk()
-    root.geometry("500x100")
-    root.title("PercyDistance v0.2")
+    appLogo = tk.PhotoImage(file = 'AppLogo.png')
+    root.geometry("400x120")
+    root.title("SuperCam Auto-Processing")
+    root.iconphoto(False, appLogo)
     
     frame=tk.Frame(root)
     frame.pack()
