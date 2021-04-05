@@ -11,3 +11,6 @@ Perceverance SuperCam vignetting correction program.
 
 ## OR
 1. Just download and run the .exe program!
+2. Select a SuperCam raw picture downloaded at this adress: https://mars.nasa.gov/mars2020/multimedia/raw-images/
+3. Click with the left mouse button to switch between the result and the original picture.
+4. Press 'S' to save the result (will be saved in the same folder with the extension '_VignetCorr'.
