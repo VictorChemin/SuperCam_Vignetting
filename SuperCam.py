@@ -83,15 +83,20 @@ while 1:
     imgBis=img.copy()
     imgBis=img.astype(np.float64)
     imgBis=cv2.multiply(imgBis,flat)
+    # color correction
+    imgBis[:, :, 0]=imgBis[:, :, 0]*0.994
+    imgBis[:, :, 1]=imgBis[:, :, 1]*0.920
+    imgBis[:, :, 2]=imgBis[:, :, 2]*1.103
     # image greyscale creation
     imgBis=imgBis.astype(np.uint8)
+    ret,imgBis=cv2.threshold(imgBis,0,255,cv2.THRESH_TOZERO)
     grayImage = cv2.cvtColor(imgBis, cv2.COLOR_BGR2GRAY)
     # min and max luminance calculation
     minL=np.mean(grayImage[0:20,0:20].flatten())
     maxL=max(grayImage.flatten())
     # setting dark point
     imgBis=imgBis-minL
-    ret,imgBis=cv2.threshold(imgBis,0,0,cv2.THRESH_TOZERO)
+    ret,imgBis=cv2.threshold(imgBis,0,255,cv2.THRESH_TOZERO)
     # resetting the maximum luminance to its initial value
     imgBis=imgBis.astype(np.uint8)
     grayImage = cv2.cvtColor(imgBis, cv2.COLOR_BGR2GRAY)
@@ -101,7 +106,7 @@ while 1:
     imgBis=imgBis.astype(np.uint8)
     # showing result
     cv2.imshow("image", imgBis)
-    cv2.resizeWindow("image", 1000, 1000)
+    cv2.resizeWindow("image", 800, 800)
     cv2.moveWindow("image", 0,0)
     
     # left click switches between result and original picture
